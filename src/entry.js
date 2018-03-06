@@ -1,10 +1,10 @@
 import css from './scss/style.scss';
-import { SongsListController } from './js/SongsListController';
-import { AppController } from './js/AppController';
-import { HeaderController } from './js/HeaderController';
-import { FormController } from './js/FormController';
-import { SongsService } from './js/SongsService';
-import { PubSub } from 'pubsub-js';
+//import { SongsListController } from './js/SongsListController';
+//import { AppController } from './js/AppController';
+//import { HeaderController } from './js/HeaderController';
+//import { FormController } from './js/FormController';
+//import { SongsService } from './js/SongsService';
+//import { PubSub } from 'pubsub-js';
 
 import 'bootstrap';
 import './scss/style.scss';
