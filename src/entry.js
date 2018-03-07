@@ -9,7 +9,7 @@ import css from './scss/style.scss';
 import 'bootstrap';
 import './scss/style.scss';
 
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
 
     let appController = new AppController("body", PubSub);
     let headerController = new HeaderController(".web-header", appController);
@@ -21,4 +21,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let formController = new FormController('.songs-form', songsService, PubSub);
 
-});
+});*/
