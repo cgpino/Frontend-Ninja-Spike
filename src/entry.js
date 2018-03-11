@@ -1,24 +1,22 @@
 import css from './scss/style.scss';
-//import { SongsListController } from './js/SongsListController';
-//import { AppController } from './js/AppController';
-//import { HeaderController } from './js/HeaderController';
-//import { FormController } from './js/FormController';
-//import { SongsService } from './js/SongsService';
-//import { PubSub } from 'pubsub-js';
+import { FormController } from './js/FormController';
+import { CommentsService } from './js/CommentsService';
+import { CommentsListController} from './js/CommentsListController';
+import { PubSub } from 'pubsub-js';
+import {Date} from './js/Date';
 
 import 'bootstrap';
-import './scss/style.scss';
 
-/*document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-    let appController = new AppController("body", PubSub);
-    let headerController = new HeaderController(".web-header", appController);
+    // Solo realizará el querySelector si encuentra el formulario para comentarios (para evitar warnings)
+    if (document.querySelector('.form-comment') != null) {
 
-    let songsService = new SongsService('http://localhost:3001/songs/');
+        let commentsService = new CommentsService('http://localhost:3001/comments/');
 
-    let songsListController = new SongsListController(".songs-list", songsService, PubSub);
-    songsListController.loadSongs();
+        let commentsListController = new CommentsListController(".comments-list", commentsService, PubSub);
+        commentsListController.loadComments();
 
-    let formController = new FormController('.songs-form', songsService, PubSub);
-
-});*/
+        let formController = new FormController('.form-comment', commentsService, PubSub);
+    }
+});

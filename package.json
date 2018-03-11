@@ -1,5 +1,5 @@
 {
-  "name": "listen",
+  "name": "spike",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -39,7 +39,6 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-    "animate.css": "^3.6.1",
     "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",

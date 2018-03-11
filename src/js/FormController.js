@@ -1,39 +1,38 @@
-
-
 export class FormController {
 
-    constructor(selector, songsService, pubSub) {
+    constructor(selector, commentsService, pubSub) {
         this.element = document.querySelector(selector);
-        this.songsService = songsService;
+        this.commentsService = commentsService;
         this.pubSub = pubSub;
         this.loading = false;
-        this.addEventListeners();
-    }
+        this.addEventListener();
+    };
 
     setLoading(loading) {
         this.loading = loading;
-        this.element.querySelectorAll('input, button').forEach(item => { item.disabled = loading });
+        this.element.querySelectorAll('input, button').forEach(item => {item.disabled = loading});
     }
 
-    addEventListeners() {
-        this.addInputListeners();
+    addEventListener() {
+        this.addInputListener();
         this.addFormSubmitListener();
     }
 
     addFormSubmitListener() {
         this.element.addEventListener('submit', event => {
             event.preventDefault();
+
             if (this.loading) {
-                return;  // si se está cargando, no hacemos nada más
+                return;
             }
             this.setLoading(true);
-            let song = this.buildSongData();
-            this.songsService.save(song).then(createdSong => {
-                console.log("CANCION CREADA", createdSong);
+            let comment = this.buildCommentData();
+            this.commentsService.save(comment).then(createdComment => {
+                console.log("COMENTARIO CREADO", createdComment);
                 this.element.reset();
-                this.pubSub.publish('song:created', createdSong);
+                this.pubSub.publish('comment:created', createdComment);
             }).catch(error => {
-                console.error("SE HA PRODUCIDO UN ERROR");
+                constructor.error("SE HA PRODUCIDO UN ERROR");
                 alert(`Se ha producido un error ${error}`);
             }).finally(() => {
                 this.setLoading(false);
@@ -41,38 +40,68 @@ export class FormController {
         });
     }
 
-    buildSongData() {
+    buildCommentData() {
+
         return {
-            artist: this.element.querySelector('#artist').value,
-            title: this.element.querySelector('#title').value,
-            cover: this.element.querySelector('#cover').value
+            name: this.element.querySelector('#name').value,
+            surname: this.element.querySelector('#surname').value,
+            email: this.element.querySelector('#email').value,
+            message: this.element.querySelector('textarea').value
         }
     }
 
-    addInputListeners() {
-        // en todos los input que hay en el formulario, los valido cuando se pierde el foco
+    addInputListener() {
         this.element.querySelectorAll('input').forEach(input => {
 
             input.addEventListener('blur', event => {
-                // event.target sería lo mismo que input en este caso
+
                 if (input.checkValidity() == false) {
-                    input.classList.add('error');
-                } else {
-                    input.classList.remove('error');
+                    input.classList.add('is-invalid');
+                    input.classList.remove('is-valid');
+                }else{
+                    input.classList.remove('is-invalid');
+                    input.classList.add('is-valid');
                 }
+
                 this.checkFormValidity();
             });
+        });
 
+        let textArea = this.element.querySelector('textarea');
+
+        textArea.addEventListener('blur', event => {
+
+            let nWords = textArea.value.split(" ").length;
+
+            if (textArea.value !== "" && nWords <= 120) {
+                textArea.classList.add('is-valid');
+                textArea.classList.remove('is-invalid');
+            }else{
+                textArea.classList.add('is-invalid');
+                textArea.classList.add('is-invalid');
+            }
+            this.checkFormValidity();
         });
     }
 
     checkFormValidity() {
-        let button = this.element.querySelector('button');
-        if (this.element.checkValidity()) {
-            button.disabled = false;
-        } else {
-            button.disabled = true;
-        }
-    }
+        const formElements = this.element.querySelectorAll('input');
 
+        for(let formElement of formElements) {
+            if (formElement.checkValidity() == false) {
+                this.element.querySelector("button").disabled = true;
+                return;
+            }
+        }
+
+        let textArea = this.element.querySelector('textarea');
+        let nWords = textArea.value.split(" ").length;
+
+        if (textArea.value !== "" && nWords <= 120) {
+            this.element.querySelector("button").disabled = false;
+        }else{
+            this.element.querySelector("button").disabled = true;
+        }
+        
+    }
 }

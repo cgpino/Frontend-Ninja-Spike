@@ -59,8 +59,22 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            filename: 'contact.html',
-            template: path.join(__dirname, 'src', 'contact.html'),
+            filename: 'detail.html',
+            template: path.join(__dirname, 'src', 'detail.html'),
+            minify: {
+                collapseWhitespace: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'login.html',
+            template: path.join(__dirname, 'src', 'login.html'),
+            minify: {
+                collapseWhitespace: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'register.html',
+            template: path.join(__dirname, 'src', 'register.html'),
             minify: {
                 collapseWhitespace: true
             }

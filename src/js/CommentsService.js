@@ -1,6 +1,4 @@
-
-
-export class SongsService {
+export class CommentsService {
 
     constructor(url) {
         this.url = url;
@@ -11,15 +9,14 @@ export class SongsService {
         return response.json();
     }
 
-    async save(song) {
+    async save(comment) {
         const response = await fetch(this.url, {
             method: 'post',
-            body: JSON.stringify(song),
+            body: JSON.stringify(comment),
             headers: {
                 'Content-Type': 'application/json'
             }
         });
         return response.json();
     }
-
 }

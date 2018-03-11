@@ -1,0 +1,35 @@
+<%= require('html-loader!./includes/header.html') %>
+<br>
+<div class="container">
+    <h2>Registrarse</h2>
+    <form>
+        <div class="form-group">
+            <label for="user">Usuario:</label>
+            <input type="user" class="form-control" id="user" placeholder="Introduce usuario" name="user">
+        </div>
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="name" class="form-control" id="name" placeholder="Introduce nombre" name="name">
+        </div>
+        <div class="form-group">
+            <label for="surname">Apellidos:</label>
+            <input type="surname" class="form-control" id="surname" placeholder="Introduce apellidos" name="surname">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Introduce email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Contraseña:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Introduce contraseña" name="pswd">
+        </div>
+        <div class="form-group">
+            <label for="confirmPwd">Confirmar contraseña:</label>
+            <input type="password" class="form-control" id="confirmPwd" placeholder="Confirma contraseña" name="confirmPwd">
+        </div>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+    </form>
+</div>
+<br>
+<%= require('html-loader!./includes/footer.html') %>
+    

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="./bundle.js"></script>
     <title>Spike!</title>
 </head>
 <style>
@@ -23,7 +22,7 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarResponsive">
-                  <form class="form-inline" action="/action_page.php">
+                  <form class="form-inline">
                     <input class="form-control" type="text" placeholder="Búsqueda">
                     <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
                   </form>
@@ -40,17 +39,26 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Guías</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">PlayStation 4</a>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Plataformas
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">PlayStation 4</a>
+                      <a class="dropdown-item" href="#">Xbox One</a>
+                      <a class="dropdown-item" href="#">Switch</a>
+                      <a class="dropdown-item" href="#">PC</a>
+                    </div>
                   </li>
+
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Xbox One</a>
+                    <a class="nav-link" href="/login.html"><i class="fas fa-sign-in-alt"></i>
+                      Iniciar sesión</a>
                   </li>
+
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Switch</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">PC</a>
+                    <a class="nav-link" href="/register.html"><i class="fas fa-edit"></i>Registrarse</a>
                   </li>
                 </ul>
               </div>
